@@ -27,9 +27,9 @@ public class SignupTest {
         WebElement passwordInput = driver.findElement(By.id("password"));
         WebElement signupButton = driver.findElement(By.cssSelector(".auth-button"));
 
-        nameInput.sendKeys("abc12");
+        nameInput.sendKeys("abcd12");
         emailInput.sendKeys(uniqueEmail);
-        passwordInput.sendKeys("abc12345");
+        passwordInput.sendKeys("abcd12345");
 
         wait.until(ExpectedConditions.elementToBeClickable(signupButton)).click();
         wait.until(ExpectedConditions.urlContains("/log_in"));

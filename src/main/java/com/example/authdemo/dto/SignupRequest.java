@@ -14,11 +14,10 @@ public class SignupRequest {
     private String email;
 
     @NotBlank(message = "Password is required")
-    @Size(min = 8, message = "Password must be at least 8 characters")
+    @Size(min = 6, message = "Password must be at least 6 characters")
     private String password;
 
     // Getters and Setters
-
     public String getUsername() {
         return username;
     }
@@ -43,7 +42,6 @@ public class SignupRequest {
         this.password = password;
     }
 
-    // Optional: toString()
     @Override
     public String toString() {
         return "SignupRequest{" +

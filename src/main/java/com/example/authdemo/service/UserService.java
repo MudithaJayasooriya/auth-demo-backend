@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
-    private static final int MIN_PASSWORD_LENGTH = 8;
+    //private static final int MIN_PASSWORD_LENGTH = 8;
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -38,8 +38,16 @@ public class UserService {
         if (userRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("Email already exists");
         }
-        if (rawPassword == null || rawPassword.length() < MIN_PASSWORD_LENGTH) {
-            throw new IllegalArgumentException("Password must be at least " + MIN_PASSWORD_LENGTH + " characters");
+
+        // Email validation
+        if (!email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            throw new IllegalArgumentException("Invalid email format");
+        }
+
+        // Password validation
+        if (rawPassword.length() < 6) {
+            throw new IllegalArgumentException("Password must be at least 6 characters long");
         }
     }
+
 }
